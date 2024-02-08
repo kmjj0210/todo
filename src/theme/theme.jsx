@@ -1,12 +1,15 @@
 export const lightTheme = {
-  bgColor: "#fefefe",
-  borderColor: "#202124",
-  textColor: "#202124",
+  bgColor: "#d9d9d9",
+  boxBgColor: "#fff",
+  borderColor: "#d7d7d7",
+  textColor: "#202120",
+  boxShadow : "0px 5px 10px rgba(0,0,0,0.16)"
 };
 
 export const darkTheme  = {
-  bgColor: "#202124",
-  borderColor: "#e3e1e3",
+  bgColor: "#202120",
+  boxBgColor : "#575757",
+  borderColor: "#d9d9d9",
   textColor: "#fefefe",
 }
 

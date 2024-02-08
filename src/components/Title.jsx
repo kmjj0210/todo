@@ -14,7 +14,7 @@ export default function Title({ themeMode, setThemeMode, tab, setTab }) {
   return (
     <div className="title"> 
       <button className='mode-toggle' onClick={toggleTheme}>
-        {themeMode === "lightTheme" ? <MdOutlineWbSunny /> : <MdOutlineModeNight />}
+        {themeMode === "darkTheme" ? <MdOutlineModeNight /> : <MdOutlineWbSunny />}
       </button>
       <ul className="title-tab">
         <li onClick={()=>setTab('all')}>All</li>
