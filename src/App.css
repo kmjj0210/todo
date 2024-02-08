@@ -1,0 +1,133 @@
+/* reset */
+* {
+    box-sizing: border-box;
+}
+fieldset,
+p,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+div,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul,
+ol {
+    list-style: none;
+}
+input,
+select,
+button,
+textarea {
+    padding: 0;
+    vertical-align: middle;
+    box-sizing: border-box;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    font-family: "Noto Sans KR", sans-serif;
+}
+label,
+button,
+input[type=submit] {
+    cursor: pointer;
+    display: inline-block;
+}
+button {
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+a {
+    text-decoration: none;
+}
+a,
+input,
+button,
+textarea {
+    border: 0 none;
+    border-radius: 0;
+    font-size: 1rem;
+    color: #222;
+}
+a:active,
+button:active,
+input:focus {
+    outline: none;
+}
+
+/* custom */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #eee;
+}
+.box {
+    padding: 20px;
+    width: 800px;
+    border-radius: 10px;
+}
+.title {
+    display: flex;
+    align-items: center;
+}
+.mode-toggle {
+    padding: 5px;
+    line-height: 30px;
+}
+.mode-toggle svg {
+    vertical-align: middle;
+}
+.title-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
+.title-tab li {
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.list {
+    padding-top: 20px;
+    height: 400px;
+    overflow: auto;
+}
+.form-wrap {
+    margin: 15px 0;
+}
+input[type="checkbox"] {
+    display: none;
+}
+input[type="checkbox"] ~ label {
+    position: relative;
+    display: inline-block;
+    padding-left: 25px;
+}
+input[type="checkbox"] ~ label::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    background: url(assets/icon-chk1.svg) no-repeat center center / contain;
+}
+input[type="checkbox"]:checked ~ label::before {
+    background-image: url(assets/icon-chk2.svg);
+}
+.search-box {
+    
+}
