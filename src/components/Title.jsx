@@ -2,7 +2,7 @@ import React from 'react';
 import { MdOutlineModeNight , MdOutlineWbSunny} from "react-icons/md";
 
 export default function Title({ themeMode, setThemeMode, tab, setTab }) {
-    const toggleTheme = () => {
+  const toggleTheme = () => {
     if (themeMode === "darkTheme") {
       setThemeMode("lightTheme");
       window.localStorage.setItem("theme", "lightTheme");
@@ -18,7 +18,8 @@ export default function Title({ themeMode, setThemeMode, tab, setTab }) {
       </button>
       <ul className="title-tab">
         <li onClick={()=>setTab('all')}>All</li>
-        <li onClick={()=>setTab('active')}>active</li>
+        <li onClick={() => setTab('active')
+        }>active</li>
         <li onClick={()=>setTab('completed')}>completed</li>
       </ul>
     </div>

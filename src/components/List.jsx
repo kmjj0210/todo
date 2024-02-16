@@ -2,7 +2,7 @@ import { useState , useRef } from 'react';
 import { GoPlus } from "react-icons/go";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-export default function List({list, setList }) {
+export default function List({ list, setList, tab , setTab}) {
   const [inputValue, setInputValue] = useState("");
   const inputAdd = () => {
     let copy = [...list];
@@ -19,6 +19,7 @@ export default function List({list, setList }) {
     }
   }
   const textInput = useRef(null);
+  
 
   return (
     <>
@@ -28,7 +29,12 @@ export default function List({list, setList }) {
             return (
               <div className="list-box" key={i}>
                 <div className="form-wrap">
-                  <input type="checkbox" id={i} />
+                  <input type="checkbox" id={i} onClick={() => { 
+                    let copy = [tab];
+                    copy.push("active");
+                    setTab(copy);
+                    console.log(`tab : ${tab} setTab : ${setTab}`)
+                  }} />
                   <label htmlFor={i}>{a}</label>
                 </div>
                 <button onClick={() => { 

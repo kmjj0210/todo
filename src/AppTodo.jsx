@@ -18,7 +18,7 @@ function AppTodo() {
       <GlobalStyle />
       <div className='box'>
         <Title themeMode={themeMode} setThemeMode={setThemeMode} tab={tab} setTab={setTab} />
-        <List list={list} setList={setList} tab={tab} />
+        <List list={list} setList={setList} tab={tab} setTab={setTab} />
       </div>
     </ThemeProvider>
   );
