@@ -1,13 +1,16 @@
-import { useState , useRef } from 'react';
+import { useState, useRef } from 'react';
 import { GoPlus } from "react-icons/go";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-export default function List({ list, setList, tab , setTab}) {
+export default function Content({ tab, setTab }) {
+  const [list, setList] = useState([]);
+  const [comp, setComp] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  let copyList = [...list];
+  let copyComp = comp;
   const inputAdd = () => {
-    let copy = [...list];
-    copy.push(inputValue);
-    setList(copy);
+    copyList.push(inputValue);
+    setList(copyList);
     setInputValue("");
   }
   const inputOnChange = (e) => { 
@@ -19,7 +22,6 @@ export default function List({ list, setList, tab , setTab}) {
     }
   }
   const textInput = useRef(null);
-  
 
   return (
     <>
@@ -29,18 +31,24 @@ export default function List({ list, setList, tab , setTab}) {
             return (
               <div className="list-box" key={i}>
                 <div className="form-wrap">
-                  <input type="checkbox" id={i} onClick={() => { 
-                    let copy = [tab];
-                    copy.push("active");
-                    setTab(copy);
-                    console.log(`tab : ${tab} setTab : ${setTab}`)
+                  <input type="checkbox" id={i}
+                    onChange={({ target: { checked } }) => { 
+                    if (checked) { 
+                      copyComp.push(i);
+                      copyComp.sort();
+                      setComp(copyComp);
+                    } else {
+                      copyComp.splice(i, 1);
+                      copyComp.sort();
+                      setComp(copyComp);
+                    }
+                    console.log(copyComp);
                   }} />
                   <label htmlFor={i}>{a}</label>
                 </div>
                 <button onClick={() => { 
-                  let copy = [...list];
-                  copy.splice(i, 1);
-                  setList(copy);
+                  copyList.splice(i, 1);
+                  setList(copyList);
                 }}><FaRegTrashAlt /></button>
               </div>
             )
@@ -60,4 +68,6 @@ export default function List({ list, setList, tab , setTab}) {
     </>
   );
 }
+
+
 
