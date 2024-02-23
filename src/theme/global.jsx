@@ -5,11 +5,6 @@ export const GlobalStyle = createGlobalStyle`
         color : ${({ theme }) => theme.textColor};
         background-color: ${({ theme }) => theme.bgColor};
     }
-    .box {
-        border : 1px solid ${({ theme }) => theme.borderColor};
-        box-shadow : ${({ theme }) => theme.boxShadow};
-        background-color : ${({theme}) => theme.boxBgColor};
-    }
     .mode-toggle {
         color : ${({ theme }) => theme.textColor};
     }
