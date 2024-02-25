@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef} from 'react';
 import { GoPlus } from "react-icons/go";
 import { styled } from "styled-components";
 
@@ -25,35 +25,23 @@ const CreateBtn = styled.button`
   background: #D9D9D9;
 `
 
-export default function TodoCreate() {
-  const [todoItem, setTodoItem] = useState([]);
+export default function TodoCreate(props) {
   const [inputValue, setInputValue] = useState("");
   const inputText = useRef(null);
   const handleInputChange = (e) => setInputValue(e.target.value);
+  let todoItemId = props.todoItem.length;
+
   const todoAdd = () => {
-    let todoItemGet = window.localStorage.getItem(`todo`);
-    let todoItemId = todoItem.length;
-    if (todoItemGet == !null) { 
-      let todoItemObj = JSON.parse(todoItemGet);
-      todoItem.push(todoItemObj +{
-        id:todoItemId,
-        text: inputValue,
-        completed: false
-      });
-      setTodoItem(todoItem);
-    } else {
-      todoItem.push({
-        id:todoItemId,
-        text: inputValue,
-        completed: false
-      });
-    }
-    
-    
-    todoItemId += 1;
-    setTodoItem(todoItem);
+    let copyTodoItem = [...props.todoItem];
+    copyTodoItem.push({
+      id:todoItemId+1,
+      text: inputValue,
+      completed: false
+    });
+    props.setTodoItem(copyTodoItem);
     setInputValue("");
-    window.localStorage.setItem(`todo`, JSON.stringify(todoItem));
+    todoItemId += 1;
+    window.localStorage.setItem(`todo`, JSON.stringify(copyTodoItem));
   }
   const handleInputKey = (e) => { 
     if (inputValue !== "" && e.key === "Enter") {

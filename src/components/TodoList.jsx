@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { styled } from "styled-components";
 import { FaRegTrashAlt } from "react-icons/fa";
 
@@ -17,13 +16,8 @@ const FormWapCont = styled.div`
 `
 
 export default function TodoList(props) {
-  let [todoData, setTodoData] = useState([]);
-  let todoItemGet = window.localStorage.getItem(`todo`);
-  let todoItemObj = JSON.parse(todoItemGet);
-  todoData = todoItemObj;
-  console.log(todoData);
 
-  const todoFilter = todoData.filter((item) => { 
+  const todoFilter = props.todoItem.filter((item) => { 
     if (props.tab === "all") {
         return true;
     } else if (props.tab === "active") { 
@@ -34,19 +28,20 @@ export default function TodoList(props) {
   });
   
   const handleDel = (e) =>{
-    let copyList = [...todoData];
-    let delIndex = todoData.findIndex((value) => value.id === e.id);
+    let copyList = [...props.todoItem];
+    let delIndex = copyList.findIndex((value) => value.id === e.id);
     copyList.splice(delIndex, 1);
-    setTodoData(copyList);
+    props.setTodoItem(copyList);
+    window.localStorage.setItem(`todo`, JSON.stringify(copyList));
   }
   return (
     <Content>
       {
-        todoData.length === 0 ?
+        props.todoItem == [] ?
           <></> :
         todoFilter.map((item) => (
           <ContentBox key={item.id}>
-            <FormWap item={item} />
+            <FormWap todoItem={props.todoItem} item={item} />
             <DelBtn item={item} handleDel={handleDel} />
           </ContentBox>
         ))
@@ -61,6 +56,7 @@ function FormWap(props) {
       <input type="checkbox" id={props.item.id} defaultChecked={props.item.completed}
         onChange={({ target: { checked } }) => {
           checked ? props.item.completed = true : props.item.completed = false;
+          window.localStorage.setItem(`todo`, JSON.stringify(props.todoItem));
         }}
       />
       <label htmlFor={props.item.id}>{props.item.text}</label>
