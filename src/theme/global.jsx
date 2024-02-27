@@ -3,16 +3,27 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     body {
         color : ${({ theme }) => theme.textColor};
-        background-color: ${({ theme }) => theme.bgColor};
+        background: ${({ theme }) => theme.bgColor};
     }
-    .mode-toggle {
-        color : ${({ theme }) => theme.textColor};
+    .title {
+        background:${({ theme }) => theme.contBgColor};
     }
-    input {
-        color : ${({ theme }) => theme.textColor};
-        border-bottom : 1px solid ${({ theme }) => theme.borderColor};
+    .title li.active {
+        color:${({theme}) => theme.activeColor};
+        background:${({theme}) => theme.activeBgColor};
     }
-    input::placeholder {
+    .toggle {
+        color : ${({ theme }) => theme.activeColor};
+    }
+    .list {
+        background:${({theme}) => theme.contBgColor}
+    }
+    .formbox input {
         color : ${({ theme }) => theme.textColor};
+        background:${({theme}) => theme.contBgColor}
+    }
+    .formbox button {
+        color : ${({theme}) => theme.addBtnColor};
+        background:${({theme}) => theme.addBtnBgColor};
     }
 `;

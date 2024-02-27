@@ -1,16 +1,23 @@
 export const lightTheme = {
-  bgColor: "#d9d9d9",
-  boxBgColor: "#fff",
-  borderColor: "#d7d7d7",
-  textColor: "#202120",
-  boxShadow : "0px 5px 10px rgba(0,0,0,0.16)"
+  textColor: "#4E5055",
+  activeColor: "#C6399A",
+  addBtnColor: "#5C37B7",
+  activeBgColor: "rgba(198, 57, 154, 0.2)",
+  bgColor: "#F8D383",
+  contBgColor: "#fff",
+  boxBgColor: "rgba(255,255,255,0.6)",
+  addBtnBgColor: "#E2D9F3",
 };
 
 export const darkTheme  = {
-  bgColor: "#202120",
-  boxBgColor : "#575757",
-  borderColor: "#d9d9d9",
-  textColor: "#fefefe",
+  textColor: "#fff",
+  activeColor: "#fff",
+  addBtnColor: "#E2D9F3",
+  activeBgColor: "#E5A116",
+  bgColor: "#121416",
+  contBgColor: "rgba(255,255,255,0.2)",
+  boxBgColor: "#212329",
+  addBtnBgColor: "#5C37B7",
 }
 
 export const theme = {
