@@ -3,8 +3,8 @@ import { FaRegTrashAlt } from "react-icons/fa";
 export default function TodoItem({ onDelete, onUpdate, item }) {
   const { id, text, completed } = item;
   const handleDelete = () => onDelete(item);
-  const handleUpdate = (prev) => { 
-    const completed = prev.target.checked ? true : false;
+  const handleUpdate = (t) => { 
+    const completed = t.target.checked ? true : false;
     onUpdate({ ...item, completed});
   }
   return (

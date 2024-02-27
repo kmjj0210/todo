@@ -3,16 +3,16 @@ import TodoItem from './TodoItem';
 import TodoAdd from './TodoAdd';
 
 export default function TodoCont({ tab }) {
-  const [todo, setTodo] = useState(() => localTodoGet());
-  const handleDelete = (deleted) => setTodo(todo.filter((prev) => prev.id !== deleted.id));
-  const handleUpdate = (updated) => setTodo(todo.map((prev) => prev.id === updated.id ? updated : prev));
-  const handleAdd = (add) => setTodo([...todo, add]);
+  const [todos, setTodos] = useState(() => localTodoGet());
+  const handleDelete = (deleted) => setTodos(todos.filter((t) => t.id !== deleted.id));
+  const handleUpdate = (updated) => setTodos(todos.map((t) => t.id === updated.id ? updated : t));
+  const handleAdd = (added) => setTodos([...todos, added]);
 
   useEffect(() => {
-    localStorage.setItem('todo', JSON.stringify(todo));
-  }, [todo])
+    localStorage.setItem('todo', JSON.stringify(todos));
+  }, [todos])
   
-  const todoList = todoListFilter(todo, tab);
+  const todoList = todoListFilter(todos, tab);
 
   return (
     <div className='cont'>
@@ -38,12 +38,12 @@ function localTodoGet () {
   return data ? JSON.parse(data) : [];
 }
 
-function todoListFilter (todo,tab) { 
+function todoListFilter (todos,tab) { 
   if (tab === "ALL") {
-    return todo;
+    return todos;
   } else if (tab === "ACTIVE") { 
-    return todo.filter((prev)=> prev.completed === false);
+    return todos.filter((t)=> t.completed === false);
   } else if (tab === "COMPLETED") {
-    return todo.filter((prev)=> prev.completed === true);
+    return todos.filter((t)=> t.completed === true);
   }
 };

@@ -7,14 +7,14 @@ export default function TodoAdd({onAdd}) {
   const handleChange = (e) => setText(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (text == "") { 
+    if (text === "") { 
       return;
-    }
+    };
     onAdd({
       id: uuidv4(),
       text,
-      completed:false
-    })
+      completed: false
+    });
     setText("");
   }
 
